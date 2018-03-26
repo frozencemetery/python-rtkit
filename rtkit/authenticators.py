@@ -170,13 +170,13 @@ class QueryStringAuthHandler(urllib2.BaseHandler):
 
 
 class KerberosAuthenticator(AbstractAuthenticator):
-    """Authenticate using Kerberos
+    """Authenticate using GSSAPI/Kerberos
 
     .. warning::
 
-        * Requires the urllib2_kerberos
-        * http://pypi.python.org/pypi/urllib2_kerberos/
-        * sudo easy_install urllib2_kerberos
+        * Requires urllib_gssapi
+        * https://pypi.python.org/pypi/urllib_gssapi
+        * sudo pip install urllib_gssapi
 
     .. doctest::
 
@@ -193,11 +193,11 @@ class KerberosAuthenticator(AbstractAuthenticator):
     """
     def __init__(self, username, password, url):
         try:
-            from urllib2_kerberos import HTTPKerberosAuthHandler
+            from urllib_gssapi import HTTPSPNEGOAuthHandler
         except ImportError:
-            raise ImportError('You need urllib2_kerberos, try: pip install urllib2_kerberos')
+            raise ImportError('You need urllib_gssapi, try: pip install urllib2_kerberos')
 
         super(KerberosAuthenticator, self).__init__(
             username, password, url,
-            HTTPKerberosAuthHandler()
+            HTTPSPNEGOAuthHandler()
         )

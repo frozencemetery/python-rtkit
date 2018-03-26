@@ -122,8 +122,8 @@ QueryString Authentication
 
     resource = RTResource('http://<HOST>/REST/1.0/', '<USER>', '<PWD>', QueryStringAuthenticator)
 
-Kerberos Authentication
----------------------------
+GSSAPI/Kerberos Authentication
+------------------------------
 
 ::
 
@@ -138,7 +138,7 @@ Kerberos Authentication
 
     resource = RTResource(url, None, None, KerberosAuthenticator)
 
-.. warning:: Remeber to install `urllib2_kerberos`.
+.. warning:: Remeber to install `urllib_gssapi`.
 
 .. _overview:
 
